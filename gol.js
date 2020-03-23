@@ -5,12 +5,42 @@ let board;
 let next;
 let state;
 let input;
+let canv;
+let stopbut;
+let runbut;
+let contbut;
+let fillbut;
+let info;
 
 function setup() {
-  createCanvas(screen.width-400, screen.height-400);
+
+  canv = createCanvas(screen.width/2, screen.height/2);
+  canv.position(screen.width/4,0);
+  w=10;
+
+  info = createElement('p','Input percentage of alive cells');
+  info.position(65,-3);
+
   input = createInput();
-  input.position(250, 7);
-  w = 10;
+  input.position(10, 10);
+  input.size(50);
+  
+  runbut = createButton('Run');
+  runbut.position(10,40);
+  runbut.mousePressed(init);
+
+  stopbut = createButton('Stop');
+  stopbut.position(10,70);
+  stopbut.mousePressed(stop);
+
+  contbut = createButton('Continue');
+  contbut.position(10,100);
+  contbut.mousePressed(cont);
+
+  fillbut = createButton('Fill all cells living')
+  fillbut.position(10,130);
+  fillbut.mousePressed(full);
+
   // Calculate columns and rows
   columns = floor(width / w);
   rows = floor(height / w);
